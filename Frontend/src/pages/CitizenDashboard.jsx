@@ -17,7 +17,7 @@ import {
   currentUser,
 } from '../data/mockData'
 
-const levelTone = { Critical: 'critical', Warning: 'warning', Notice: 'info' }
+const levelTone = { Critical: 'critical', Warning: 'warning', Notice: 'info'}
 
 export default function CitizenDashboard() {
   const [active, setActive] = useState(0)
@@ -26,7 +26,7 @@ export default function CitizenDashboard() {
     <div className="flex h-screen flex-col bg-base">
       <Header user={currentUser.citizen} />
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar items={citizenSidebar} activeIndex={active} onSelect={setActive} accent="blue" />
+        <Sidebar items={citizenSidebar} activeIndex={active} onSelect={setActive} accent="blue" user={currentUser.citizen}/>
 
         <main className="flex-1 overflow-y-auto p-6 space-y-6">
           <div>

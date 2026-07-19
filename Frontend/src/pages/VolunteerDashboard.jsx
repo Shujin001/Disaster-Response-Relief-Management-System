@@ -24,7 +24,7 @@ export default function VolunteerDashboard() {
     <div className="flex h-screen flex-col bg-base">
       <Header user={currentUser.volunteer} />
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar items={volunteerSidebar} activeIndex={active} onSelect={setActive} accent="crimson" />
+        <Sidebar items={volunteerSidebar} activeIndex={active} onSelect={setActive} accent="crimson" user={currentUser.volunteer}/>
 
         <main className="flex-1 overflow-y-auto p-6 space-y-6">
           <div>

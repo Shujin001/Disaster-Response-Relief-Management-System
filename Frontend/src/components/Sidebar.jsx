@@ -1,8 +1,10 @@
 import * as Icons from 'lucide-react'
 import { useState } from 'react'
-import { PanelLeftClose, PanelLeftOpen } from 'lucide-react'
+import { Bell, PanelLeftClose, PanelLeftOpen, ChevronDown } from 'lucide-react'
+import { orgInfo } from '../data/mockData'
 
-export default function Sidebar({ items, activeIndex = 0, onSelect, accent = 'crimson' }) {
+
+export default function Sidebar({ items, activeIndex = 0, onSelect, accent = 'crimson', user}) {
   const [collapsed, setCollapsed] = useState(false)
 
   const accentText = accent === 'blue' ? 'text-brand-blueLight' : 'text-brand-crimson'
@@ -36,6 +38,16 @@ export default function Sidebar({ items, activeIndex = 0, onSelect, accent = 'cr
           )
         })}
       </nav>
+      <div className="hidden sm:flex items-center gap-2 pl-3 border-l border-base-border"> 
+        <div className="h-8 w-8 rounded-full bg-brand-blue flex items-center justify-center text-xs font-display font-semibold"> 
+          {user.initials} 
+        </div>
+        <div className="leading-tight">
+          <p className="text-sm font-medium text-ink-primary">{user.name}</p> 
+          <p className="text-xs text-ink-muted">{user.role}</p> 
+        </div>
+        <ChevronDown size={14} className="text-ink-muted ml-1" /> 
+      </div>
 
       <button
         onClick={() => setCollapsed((c) => !c)}

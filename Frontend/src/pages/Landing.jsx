@@ -30,8 +30,10 @@ export default function Landing() {
   return (
     <div className="min-h-screen bg-base flex flex-col items-center justify-center px-6 py-16">
       <div className="text-center mb-12 max-w-xl">
-        <div className="mx-auto mb-5 h-14 w-14 rounded-full bg-gradient-to-br from-brand-crimson to-brand-crimsondeep flex items-center justify-center font-display font-semibold shadow-panel">
-          NP
+        <div className="flex items-center justify-center font-display font-semibold shadow-panel">
+          <div style={{ width: "120px", height: "120px" }}>
+           <img src="/Emblem_of_Nepal.svg" alt=""/> 
+        </div>
         </div>
         <p className="text-xs font-mono tracking-widest text-brand-crimson uppercase">
           {orgInfo.country}

@@ -25,7 +25,7 @@ export default function GovernmentDashboard() {
     <div className="flex h-screen flex-col bg-base">
       <Header user={currentUser.government} />
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar items={govSidebar} activeIndex={active} onSelect={setActive} accent="crimson" />
+        <Sidebar items={govSidebar} activeIndex={active} onSelect={setActive} accent="crimson" user={currentUser.government}/>
 
         <main className="flex-1 overflow-y-auto p-6 space-y-6">
           <div>
