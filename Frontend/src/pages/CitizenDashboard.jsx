@@ -6,6 +6,8 @@ import Sidebar from '../components/Sidebar'
 import StatCard from '../components/StatCard'
 import Panel from '../components/Panel'
 import StatusDot from '../components/StatusDot'
+import logo from "../assets/logo.png";
+import flag from "../assets/flag.png";
 import {
   citizenSidebar,
   citizenStats,
@@ -24,11 +26,42 @@ export default function CitizenDashboard() {
 
   return (
     <div className="flex h-screen flex-col bg-base">
+       <div className="flex items-center justify-between bg-white rounded-xl shadow p-4">
+        
+            <div className="flex items-center gap-4">
+              <img
+                src={logo}
+                alt="Nepal Logo"
+                className="w-16 h-16 object-contain"
+              />
+
+              <div>
+                <h2 className="text-red-600 font-semibold">
+                  Government of Nepal
+                </h2>
+
+                <p className="text-blue-600 text-sm">
+                  Nepal Disaster Risk Management
+                </p>
+
+                <p className="text-gray-500 text-sm">
+                  Kathmandu, Nepal
+                </p>
+              </div>
+            </div>
+
+            <img
+              src={flag}
+              alt="Nepal Flag"
+              className="w-16 h-20 object-contain"
+            />
+          </div>
       <Header user={currentUser.citizen} />
       <div className="flex flex-1 overflow-hidden">
         <Sidebar items={citizenSidebar} activeIndex={active} onSelect={setActive} accent="blue" />
 
         <main className="flex-1 overflow-y-auto p-6 space-y-6">
+         
           <div>
             <h1 className="font-display text-xl font-semibold text-ink-primary">
               Welcome back, {currentUser.citizen.name.split(' ')[0]}
@@ -96,11 +129,10 @@ export default function CitizenDashboard() {
                       </p>
                     </div>
                     <span
-                      className={`text-xs font-mono px-2 py-1 rounded-full border ${
-                        r.status === 'Approved'
+                      className={`text-xs font-mono px-2 py-1 rounded-full border ${r.status === 'Approved'
                           ? 'border-status-safe/40 text-status-safe'
                           : 'border-status-warning/40 text-status-warning'
-                      }`}
+                        }`}
                     >
                       {r.status}
                     </span>
@@ -116,9 +148,8 @@ export default function CitizenDashboard() {
                     <div className="flex items-center justify-between">
                       <p className="text-ink-primary">{s.name}</p>
                       <span
-                        className={`text-xs font-mono ${
-                          s.status === 'Full' ? 'text-status-critical' : 'text-status-safe'
-                        }`}
+                        className={`text-xs font-mono ${s.status === 'Full' ? 'text-status-critical' : 'text-status-safe'
+                          }`}
                       >
                         {s.status}
                       </span>
