@@ -74,7 +74,11 @@ export default function Landing() {
         to="/login"
         className="mt-8 text-sm text-ink-secondary hover:text-ink-primary underline underline-offset-4"
       >
+<<<<<<< HEAD
         Don't Have an account? Register Now!
+=======
+        Already have an account? Sign in
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
       </Link>
     </div>
   )

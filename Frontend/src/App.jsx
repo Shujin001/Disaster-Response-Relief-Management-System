@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import CitizenGate from './components/CitizenGate'
+=======
+import { Routes, Route } from 'react-router-dom'
+import { AuthProvider } from './context/AuthContext'
+import ProtectedRoute from './components/ProtectedRoute'
+import Landing from './pages/Landing'
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
 import Login from './pages/Login'
 import GovernmentDashboard from './pages/GovernmentDashboard'
 import VolunteerDashboard from './pages/VolunteerDashboard'
@@ -19,12 +26,17 @@ export default function App() {
   return (
     <AuthProvider>
       <Routes>
+<<<<<<< HEAD
         {/* The site opens straight into the citizen experience — no login
             required. Government/volunteer staff reach their own areas via
             /login (linked from the citizen header). */}
         <Route path="/" element={<Navigate to="/citizen" replace />} />
         <Route path="/login" element={<Login />} />
 
+=======
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
         <Route
           path="/government"
           element={
@@ -33,6 +45,7 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+<<<<<<< HEAD
 
         <Route
           path="/citizen"
@@ -54,6 +67,16 @@ export default function App() {
           <Route path="profile" element={<ProfilePage />} />
         </Route>
 
+=======
+        <Route
+          path="/citizen"
+          element={
+            <ProtectedRoute roles={['citizen', 'admin']}>
+              <CitizenDashboard />
+            </ProtectedRoute>
+          }
+        />
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
         <Route
           path="/volunteer"
           element={

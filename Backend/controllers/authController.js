@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import crypto from 'crypto'
+=======
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
 import asyncHandler from 'express-async-handler'
 import User from '../models/User.js'
 import generateToken from '../utils/generateToken.js'
@@ -37,6 +40,7 @@ export const register = asyncHandler(async (req, res) => {
   })
 })
 
+<<<<<<< HEAD
 // @desc    Silently create (and log in as) an anonymous citizen account, so
 //          citizens can use the app without ever filling out a login form.
 //          The account is real (so incident reports/relief requests have a
@@ -59,6 +63,8 @@ export const guestLogin = asyncHandler(async (req, res) => {
   })
 })
 
+=======
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
 // @desc    Log in a user
 // @route   POST /api/auth/login
 // @access  Public
@@ -90,6 +96,7 @@ export const login = asyncHandler(async (req, res) => {
 export const getMe = asyncHandler(async (req, res) => {
   res.json({ success: true, data: req.user.toSafeObject() })
 })
+<<<<<<< HEAD
 
 // @desc    Update the logged-in user's own profile (name, phone, location, skills)
 // @route   PUT /api/auth/me
@@ -107,3 +114,5 @@ export const updateMe = asyncHandler(async (req, res) => {
 
   res.json({ success: true, data: req.user.toSafeObject() })
 })
+=======
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8

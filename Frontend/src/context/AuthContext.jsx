@@ -1,6 +1,9 @@
 import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import api, { TOKEN_KEY, getToken } from '../api/client'
+<<<<<<< HEAD
 import { guestLoginRequest } from '../api/endpoints'
+=======
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
 
 const USER_KEY = 'drms_user'
 const AuthContext = createContext(null)
@@ -78,6 +81,7 @@ export function AuthProvider({ children }) {
     return res.data
   }, [])
 
+<<<<<<< HEAD
   // Silently provisions an anonymous citizen account + JWT so citizens never
   // have to see a login form. Called by CitizenGate the first time someone
   // lands on /citizen with no existing session.
@@ -89,12 +93,15 @@ export function AuthProvider({ children }) {
     return res.data
   }, [])
 
+=======
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
   const logout = useCallback(() => {
     clearSession()
     setToken(null)
     setUser(null)
   }, [])
 
+<<<<<<< HEAD
   // Lets a page (e.g. Profile) push a freshly-saved user object into context
   // + sessionStorage without a full /auth/me round trip.
   const updateUser = useCallback((updated) => {
@@ -106,6 +113,10 @@ export function AuthProvider({ children }) {
     <AuthContext.Provider
       value={{ user, token, loading, login, register, loginAsGuest, logout, updateUser }}
     >
+=======
+  return (
+    <AuthContext.Provider value={{ user, token, loading, login, register, logout }}>
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
       {children}
     </AuthContext.Provider>
   )

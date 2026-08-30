@@ -1,5 +1,9 @@
 import { useState } from 'react'
+<<<<<<< HEAD
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+=======
+import { useLocation, useNavigate } from 'react-router-dom'
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
 import { ShieldAlert, LogIn, UserPlus } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { orgInfo } from '../data/mockData'
@@ -10,7 +14,11 @@ const emptyRegisterForm = {
   name: '',
   email: '',
   password: '',
+<<<<<<< HEAD
   role: 'volunteer',
+=======
+  role: 'citizen',
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
   phone: '',
   address: '',
 }
@@ -78,6 +86,7 @@ export default function Login() {
           <h1 className="font-display font-semibold text-ink-primary text-xl mt-1">
             {orgInfo.department}
           </h1>
+<<<<<<< HEAD
           <p className="text-xs text-ink-muted mt-2">
             For government and volunteer staff. Reporting an emergency?{' '}
             <Link to="/citizen" className="text-brand-blueLight hover:underline">
@@ -85,6 +94,8 @@ export default function Login() {
             </Link>{' '}
             — no sign-in needed.
           </p>
+=======
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
           <p className="text-xs text-ink-muted mt-1">{orgInfo.location}</p>
         </div>
 
@@ -198,8 +209,13 @@ export default function Login() {
                   onChange={(e) => setRegisterForm({ ...registerForm, role: e.target.value })}
                   className={inputClass}
                 >
+<<<<<<< HEAD
                   <option value="volunteer">Volunteer</option>
                   <option value="citizen">Citizen</option>
+=======
+                  <option value="citizen">Citizen</option>
+                  <option value="volunteer">Volunteer</option>
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
                 </select>
               </Field>
               <Field label="Phone (optional)">

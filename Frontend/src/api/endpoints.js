@@ -5,12 +5,15 @@ export const getGovernmentDashboard = () => api.get('/dashboard/government')
 export const getCitizenDashboard = () => api.get('/dashboard/citizen')
 export const getVolunteerDashboard = () => api.get('/dashboard/volunteer')
 
+<<<<<<< HEAD
 // Profile
 export const updateProfile = (payload) => api.put('/auth/me', payload)
 
 // Guest (citizen, no credentials) session
 export const guestLoginRequest = () => api.post('/auth/guest', {}, { auth: false })
 
+=======
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
 // Incidents
 export const getIncidents = (params = '') => api.get(`/incidents${params}`)
 export const createIncident = (payload) => api.post('/incidents', payload)
