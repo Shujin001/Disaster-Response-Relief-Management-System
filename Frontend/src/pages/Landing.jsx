@@ -42,7 +42,7 @@ export default function Landing() {
           Nepal Disaster Risk Management
         </h1>
         <p className="text-ink-muted mt-3">
-          Choose a role to preview its dashboard. {orgInfo.location}.
+          Sign in to reach your dashboard. {orgInfo.location}.
         </p>
       </div>
 
@@ -50,7 +50,7 @@ export default function Landing() {
         {roles.map((r) => (
           <Link
             key={r.to}
-            to={r.to}
+            to="/login"
             className="group rounded-2xl border border-base-border bg-base-surface p-6 flex flex-col gap-4 hover:border-white/20 transition-colors shadow-panel"
           >
             <div
@@ -63,12 +63,19 @@ export default function Landing() {
               <p className="text-sm text-ink-muted mt-1.5 leading-relaxed">{r.desc}</p>
             </div>
             <span className="mt-auto inline-flex items-center gap-1.5 text-sm text-ink-secondary group-hover:text-ink-primary transition-colors">
-              Open dashboard
+              Sign in
               <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
             </span>
           </Link>
         ))}
       </div>
+
+      <Link
+        to="/login"
+        className="mt-8 text-sm text-ink-secondary hover:text-ink-primary underline underline-offset-4"
+      >
+        Don't Have an account? Register Now!
+      </Link>
     </div>
   )
 }
