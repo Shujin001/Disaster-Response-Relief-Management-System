@@ -1,7 +1,10 @@
 import { useMemo } from 'react'
 import { MapContainer, TileLayer, CircleMarker, Popup, Tooltip } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
+<<<<<<< HEAD
 import { useTheme } from '../context/ThemeContext'
+=======
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
 import { labelize, capitalize, timeAgo } from '../utils/format'
 
 // Roughly centers the Kathmandu Valley — every seeded location falls near here.
@@ -17,6 +20,7 @@ const SEVERITY_COLOR = {
 
 const SHELTER_COLOR = { open: '#2E5CB8', full: '#F5A524', closed: '#5B6B8C' }
 
+<<<<<<< HEAD
 const TILE_URL = {
   dark: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
   light: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
@@ -25,6 +29,9 @@ const MAP_BG = { dark: '#0A0F1C', light: '#F4F6FB' }
 
 export default function DisasterMap({ incidents = [], shelters = [], userLocation, height = '100%' }) {
   const { theme } = useTheme()
+=======
+export default function DisasterMap({ incidents = [], shelters = [], userLocation, height = '100%' }) {
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
   const incidentPoints = useMemo(
     () => incidents.filter((i) => typeof i.location?.lat === 'number' && typeof i.location?.lng === 'number'),
     [incidents]
@@ -45,6 +52,7 @@ export default function DisasterMap({ incidents = [], shelters = [], userLocatio
     : DEFAULT_CENTER
 
   return (
+<<<<<<< HEAD
     <div className="relative h-full w-full rounded-lg overflow-hidden border border-base-border" style={{ height }}>
       <MapContainer
         key={theme}
@@ -56,6 +64,18 @@ export default function DisasterMap({ incidents = [], shelters = [], userLocatio
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
           url={TILE_URL[theme]}
+=======
+    <div className="relative h-full w-full rounded-lg overflow-hidden border border-white/10" style={{ height }}>
+      <MapContainer
+        center={center}
+        zoom={DEFAULT_ZOOM}
+        scrollWheelZoom
+        style={{ height: '100%', width: '100%', background: '#0A0F1C' }}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
         />
 
         {incidentPoints.map((inc) => (

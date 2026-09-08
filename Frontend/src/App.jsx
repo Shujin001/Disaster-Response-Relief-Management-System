@@ -1,7 +1,12 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import CitizenGate from './components/CitizenGate'
+<<<<<<< HEAD
 import Login from './pages/Login'
 
 // Citizen area
@@ -41,18 +46,59 @@ import NavigationPage from './pages/volunteer/NavigationPage'
 import UpdateStatusPage from './pages/volunteer/UpdateStatusPage'
 import ActivityPage from './pages/volunteer/ActivityPage'
 import VolunteerProfilePage from './pages/volunteer/ProfilePage'
+=======
+=======
+import { Routes, Route } from 'react-router-dom'
+import { AuthProvider } from './context/AuthContext'
+import ProtectedRoute from './components/ProtectedRoute'
+import Landing from './pages/Landing'
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
+import Login from './pages/Login'
+import GovernmentDashboard from './pages/GovernmentDashboard'
+import VolunteerDashboard from './pages/VolunteerDashboard'
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
+
+import CitizenLayout from './pages/citizen/CitizenLayout'
+import CitizenDashboard from './pages/citizen/CitizenDashboard'
+import IncidentActionPage from './pages/citizen/IncidentActionPage'
+import AlertsPage from './pages/citizen/AlertsPage'
+import SheltersPage from './pages/citizen/SheltersPage'
+import DonatePage from './pages/citizen/DonatePage'
+import ContactsPage from './pages/citizen/ContactsPage'
+import ProfilePage from './pages/citizen/ProfilePage'
 
 export default function App() {
   return (
     <AuthProvider>
       <Routes>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
         {/* The site opens straight into the citizen experience — no login
             required. Government/volunteer staff reach their own areas via
             /login (linked from the citizen header). */}
         <Route path="/" element={<Navigate to="/citizen" replace />} />
         <Route path="/login" element={<Login />} />
 
+<<<<<<< HEAD
         {/* Citizen — no login required, guest session auto-provisioned by CitizenGate */}
+=======
+=======
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
+        <Route
+          path="/government"
+          element={
+            <ProtectedRoute roles={['admin']}>
+              <GovernmentDashboard />
+            </ProtectedRoute>
+          }
+        />
+<<<<<<< HEAD
+
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
         <Route
           path="/citizen"
           element={
@@ -66,6 +112,7 @@ export default function App() {
           <Route path="report" element={<IncidentActionPage mode="report" />} />
           <Route path="relief" element={<IncidentActionPage mode="relief" />} />
           <Route path="missing" element={<IncidentActionPage mode="missing" />} />
+<<<<<<< HEAD
           <Route path="alerts" element={<CitizenAlertsPage />} />
           <Route path="shelters" element={<CitizenSheltersPage />} />
           <Route path="donate" element={<DonatePage />} />
@@ -100,10 +147,30 @@ export default function App() {
         </Route>
 
         {/* Volunteer — volunteer or admin */}
+=======
+          <Route path="alerts" element={<AlertsPage />} />
+          <Route path="shelters" element={<SheltersPage />} />
+          <Route path="donate" element={<DonatePage />} />
+          <Route path="contacts" element={<ContactsPage />} />
+          <Route path="profile" element={<ProfilePage />} />
+        </Route>
+
+=======
+        <Route
+          path="/citizen"
+          element={
+            <ProtectedRoute roles={['citizen', 'admin']}>
+              <CitizenDashboard />
+            </ProtectedRoute>
+          }
+        />
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
         <Route
           path="/volunteer"
           element={
             <ProtectedRoute roles={['volunteer', 'admin']}>
+<<<<<<< HEAD
               <VolunteerLayout />
             </ProtectedRoute>
           }
@@ -116,6 +183,12 @@ export default function App() {
           <Route path="activity" element={<ActivityPage />} />
           <Route path="profile" element={<VolunteerProfilePage />} />
         </Route>
+=======
+              <VolunteerDashboard />
+            </ProtectedRoute>
+          }
+        />
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
       </Routes>
     </AuthProvider>
   )

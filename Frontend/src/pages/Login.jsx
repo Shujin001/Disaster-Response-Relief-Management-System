@@ -1,9 +1,20 @@
 import { useState } from 'react'
+<<<<<<< HEAD
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { ShieldAlert, LogIn, UserPlus } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { orgInfo } from '../data/mockData'
 import ThemeToggle from '../components/ThemeToggle'
+=======
+<<<<<<< HEAD
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+=======
+import { useLocation, useNavigate } from 'react-router-dom'
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
+import { ShieldAlert, LogIn, UserPlus } from 'lucide-react'
+import { useAuth } from '../context/AuthContext'
+import { orgInfo } from '../data/mockData'
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
 
 const roleHome = { admin: '/government', citizen: '/citizen', volunteer: '/volunteer' }
 
@@ -11,7 +22,15 @@ const emptyRegisterForm = {
   name: '',
   email: '',
   password: '',
+<<<<<<< HEAD
   role: 'volunteer',
+=======
+<<<<<<< HEAD
+  role: 'volunteer',
+=======
+  role: 'citizen',
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
   phone: '',
   address: '',
 }
@@ -70,10 +89,14 @@ export default function Login() {
   }
 
   return (
+<<<<<<< HEAD
     <div className="min-h-screen bg-base flex items-center justify-center p-6 relative">
       <div className="absolute top-4 right-4">
         <ThemeToggle />
       </div>
+=======
+    <div className="min-h-screen bg-base flex items-center justify-center p-6">
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
       <div className="w-full max-w-md">
         <div className="text-center mb-6">
           <p className="text-[11px] font-mono tracking-wide text-brand-crimson uppercase">
@@ -82,6 +105,10 @@ export default function Login() {
           <h1 className="font-display font-semibold text-ink-primary text-xl mt-1">
             {orgInfo.department}
           </h1>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
           <p className="text-xs text-ink-muted mt-2">
             For government and volunteer staff. Reporting an emergency?{' '}
             <Link to="/citizen" className="text-brand-blueLight hover:underline">
@@ -89,6 +116,11 @@ export default function Login() {
             </Link>{' '}
             — no sign-in needed.
           </p>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
           <p className="text-xs text-ink-muted mt-1">{orgInfo.location}</p>
         </div>
 
@@ -202,8 +234,18 @@ export default function Login() {
                   onChange={(e) => setRegisterForm({ ...registerForm, role: e.target.value })}
                   className={inputClass}
                 >
+<<<<<<< HEAD
                   <option value="volunteer">Volunteer</option>
                   <option value="citizen">Citizen</option>
+=======
+<<<<<<< HEAD
+                  <option value="volunteer">Volunteer</option>
+                  <option value="citizen">Citizen</option>
+=======
+                  <option value="citizen">Citizen</option>
+                  <option value="volunteer">Volunteer</option>
+>>>>>>> 93c33bf26d2a7b20a09be11ef6fc0a5d0068f4b8
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
                 </select>
               </Field>
               <Field label="Phone (optional)">

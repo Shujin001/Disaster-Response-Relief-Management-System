@@ -107,39 +107,3 @@ export const updateMe = asyncHandler(async (req, res) => {
 
   res.json({ success: true, data: req.user.toSafeObject() })
 })
-
-// @desc    List users, optionally filtered by role — powers the government
-//          dashboard's Rescue Team / Volunteer Verification / User
-//          Management pages, none of which need anything beyond a filtered list.
-// @route   GET /api/auth/users?role=volunteer
-// @access  Private/Admin
-export const listUsers = asyncHandler(async (req, res) => {
-  const filter = {}
-  if (req.query.role) filter.role = req.query.role
-
-  const users = await User.find(filter).sort('-createdAt')
-  res.json({ success: true, count: users.length, data: users.map((u) => u.toSafeObject()) })
-})
-
-// @desc    Update a user's account status (active/inactive/suspended) — used
-//          by the government dashboard to approve/verify or suspend volunteers.
-// @route   PATCH /api/auth/users/:id/status
-// @access  Private/Admin
-export const updateUserStatus = asyncHandler(async (req, res) => {
-  const { status } = req.body
-  if (!['active', 'inactive', 'suspended'].includes(status)) {
-    res.status(400)
-    throw new Error("Status must be 'active', 'inactive', or 'suspended'")
-  }
-
-  const user = await User.findById(req.params.id)
-  if (!user) {
-    res.status(404)
-    throw new Error('User not found')
-  }
-
-  user.status = status
-  await user.save()
-
-  res.json({ success: true, data: user.toSafeObject() })
-})

@@ -2,7 +2,10 @@ import { Bell, LogOut, ShieldCheck } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { orgInfo } from '../data/mockData'
 import { useAuth } from '../context/AuthContext'
+<<<<<<< HEAD
 import ThemeToggle from './ThemeToggle'
+=======
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
 
 export default function Header({ user }) {
   const { user: authUser, logout } = useAuth()
@@ -32,6 +35,7 @@ export default function Header({ user }) {
       </div>
 
       <div className="flex items-center gap-3 sm:gap-5">
+<<<<<<< HEAD
         {user && (
           <span className="hidden md:inline text-sm text-ink-primary">
             {user.name} <span className="text-ink-muted">· {user.role}</span>
@@ -48,14 +52,23 @@ export default function Header({ user }) {
           <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-status-critical" />
         </button>
 
+=======
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
         {isGuestCitizen ? (
           <Link
             to="/login"
             title="Government or volunteer? Sign in here"
+<<<<<<< HEAD
             className="flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-ink-secondary bg-base hover:text-ink-primary hover:bg-base-raised transition-colors text-sm border border-base-border"
           >
             <ShieldCheck size={16} />
             <span>Staff sign in</span>
+=======
+            className="flex items-center gap-1.5 rounded-lg p-2 text-ink-secondary bg-base hover:text-ink-primary hover:bg-base-raised transition-colors text-sm"
+          >
+            <ShieldCheck size={16} />
+            <span className="hidden sm:inline">Staff sign in</span>
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
           </Link>
         ) : (
           <button

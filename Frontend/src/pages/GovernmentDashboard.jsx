@@ -1,11 +1,18 @@
 import { useCallback, useMemo, useState } from 'react'
+<<<<<<< HEAD
 import { Link } from 'react-router-dom'
+=======
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
 import { ArrowUpRight, Megaphone } from 'lucide-react'
 import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
 import StatCard from '../components/StatCard'
 import Panel from '../components/Panel'
 import StatusDot from '../components/StatusDot'
+<<<<<<< HEAD
+=======
+import Modal from '../components/Modal'
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
 import DisasterMap from '../components/DisasterMap'
 import { LoadingState, ErrorBanner, EmptyRow } from '../components/AsyncState'
 import { govSidebar } from '../data/mockData'
@@ -18,11 +25,19 @@ import {
   getVolunteerTasks,
   getResources,
   getShelters,
+<<<<<<< HEAD
+=======
+  createAlert,
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
   updateIncident,
 } from '../api/endpoints'
 import { timeAgo, labelize, capitalize } from '../utils/format'
 
 const INCIDENT_STATUSES = ['reported', 'verified', 'in-progress', 'resolved']
+<<<<<<< HEAD
+=======
+const ALERT_SEVERITIES = ['critical', 'warning', 'info', 'safe']
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
 
 export default function GovernmentDashboard() {
   const [active, setActive] = useState(0)
@@ -60,6 +75,37 @@ export default function GovernmentDashboard() {
       .sort((a, b) => b.count - a.count)
   }, [data])
 
+<<<<<<< HEAD
+=======
+  // --- Issue Alert modal ---
+  const [alertModalOpen, setAlertModalOpen] = useState(false)
+  const [alertForm, setAlertForm] = useState({ title: '', message: '', severity: 'warning', area: '' })
+  const [alertSubmitting, setAlertSubmitting] = useState(false)
+  const [alertError, setAlertError] = useState('')
+
+  const submitAlert = async (e) => {
+    e.preventDefault()
+    setAlertSubmitting(true)
+    setAlertError('')
+    try {
+      await createAlert({
+        title: alertForm.title.trim(),
+        message: alertForm.message.trim(),
+        severity: alertForm.severity,
+        area: alertForm.area.trim() || undefined,
+        active: true,
+      })
+      setAlertModalOpen(false)
+      setAlertForm({ title: '', message: '', severity: 'warning', area: '' })
+      refetch()
+    } catch (err) {
+      setAlertError(err.message || 'Could not issue alert.')
+    } finally {
+      setAlertSubmitting(false)
+    }
+  }
+
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
   // --- Inline incident status update ---
   const [statusUpdatingId, setStatusUpdatingId] = useState(null)
   const changeIncidentStatus = async (id, status) => {
@@ -115,12 +161,21 @@ export default function GovernmentDashboard() {
                 Real-time situational awareness across all active operations.
               </p>
             </div>
+<<<<<<< HEAD
             <Link
               to="/government/alerts/new"
               className="flex items-center gap-1.5 rounded-lg bg-brand-crimson hover:bg-brand-crimsondeep transition-colors text-white text-sm font-medium px-3.5 py-2 shrink-0"
             >
               <Megaphone size={15} /> Issue Alert
             </Link>
+=======
+            <button
+              onClick={() => setAlertModalOpen(true)}
+              className="flex items-center gap-1.5 rounded-lg bg-brand-crimson hover:bg-brand-crimsondeep transition-colors text-white text-sm font-medium px-3.5 py-2 shrink-0"
+            >
+              <Megaphone size={15} /> Issue Alert
+            </button>
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
           </div>
 
           {error && <ErrorBanner message={error} onRetry={refetch} />}
@@ -293,6 +348,67 @@ export default function GovernmentDashboard() {
           </div>
         </main>
       </div>
+
+      {alertModalOpen && (
+        <Modal title="Issue Alert" onClose={() => setAlertModalOpen(false)}>
+          <form onSubmit={submitAlert} className="space-y-4">
+            {alertError && <ErrorBanner message={alertError} />}
+            <label className="block">
+              <span className="block text-xs text-ink-muted mb-1.5">Title</span>
+              <input
+                required
+                value={alertForm.title}
+                onChange={(e) => setAlertForm({ ...alertForm, title: e.target.value })}
+                placeholder="e.g. Flood Warning: Bagmati River Basin"
+                className="w-full rounded-lg border border-base-border bg-base px-3 py-2.5 text-sm text-ink-primary placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand-blueLight"
+              />
+            </label>
+            <label className="block">
+              <span className="block text-xs text-ink-muted mb-1.5">Message</span>
+              <textarea
+                required
+                rows={3}
+                value={alertForm.message}
+                onChange={(e) => setAlertForm({ ...alertForm, message: e.target.value })}
+                placeholder="What should people do?"
+                className="w-full rounded-lg border border-base-border bg-base px-3 py-2.5 text-sm text-ink-primary placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand-blueLight resize-none"
+              />
+            </label>
+            <div className="grid grid-cols-2 gap-3">
+              <label className="block">
+                <span className="block text-xs text-ink-muted mb-1.5">Severity</span>
+                <select
+                  value={alertForm.severity}
+                  onChange={(e) => setAlertForm({ ...alertForm, severity: e.target.value })}
+                  className="w-full rounded-lg border border-base-border bg-base px-3 py-2.5 text-sm text-ink-primary focus:outline-none focus:ring-2 focus:ring-brand-blueLight"
+                >
+                  {ALERT_SEVERITIES.map((s) => (
+                    <option key={s} value={s}>
+                      {capitalize(s)}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="block">
+                <span className="block text-xs text-ink-muted mb-1.5">Area (optional)</span>
+                <input
+                  value={alertForm.area}
+                  onChange={(e) => setAlertForm({ ...alertForm, area: e.target.value })}
+                  placeholder="Kathmandu Valley"
+                  className="w-full rounded-lg border border-base-border bg-base px-3 py-2.5 text-sm text-ink-primary placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand-blueLight"
+                />
+              </label>
+            </div>
+            <button
+              type="submit"
+              disabled={alertSubmitting}
+              className="w-full rounded-lg bg-brand-crimson hover:bg-brand-crimsondeep transition-colors text-white text-sm font-medium py-2.5 disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              {alertSubmitting ? 'Publishing…' : 'Publish alert'}
+            </button>
+          </form>
+        </Modal>
+      )}
     </div>
   )
 }

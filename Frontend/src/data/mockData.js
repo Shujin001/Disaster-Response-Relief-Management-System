@@ -11,6 +11,7 @@ export const orgInfo = {
 }
 
 export const govSidebar = [
+<<<<<<< HEAD
   { label: 'Dashboard', icon: 'LayoutDashboard', to: '/government', end: true },
   { label: 'Live Disaster Map', icon: 'Map', to: '/government/map' },
   { label: 'Incident Management', icon: 'FlameKindling', to: '/government/incidents' },
@@ -25,6 +26,22 @@ export const govSidebar = [
   { label: 'Reports & Analytics', icon: 'BarChart3', to: '/government/reports' },
   { label: 'Announcements', icon: 'Megaphone', to: '/government/announcements' },
   { label: 'Settings', icon: 'Settings', to: '/government/settings' },
+=======
+  { label: 'Dashboard', icon: 'LayoutDashboard' },
+  { label: 'Live Disaster Map', icon: 'Map' },
+  { label: 'Incident Management', icon: 'FlameKindling' },
+  { label: 'Rescue Team Management', icon: 'Users' },
+  { label: 'Citizen Requests', icon: 'Inbox' },
+  { label: 'Shelter Management', icon: 'Home' },
+  { label: 'Relief Distribution', icon: 'PackageOpen' },
+  { label: 'Inventory', icon: 'Boxes' },
+  { label: 'Volunteer Verification', icon: 'ShieldCheck' },
+  { label: 'NGO Management', icon: 'Building2' },
+  { label: 'User Management', icon: 'UserCog' },
+  { label: 'Reports & Analytics', icon: 'BarChart3' },
+  { label: 'Announcements', icon: 'Megaphone' },
+  { label: 'Settings', icon: 'Settings' },
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
 ]
 
 export const citizenSidebar = [

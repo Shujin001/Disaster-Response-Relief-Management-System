@@ -40,7 +40,11 @@ export default function ContactsPage() {
           <a
             key={c.label}
             href={`tel:${c.number}`}
+<<<<<<< HEAD
             className="flex items-center justify-between rounded-xl border border-base-border bg-base-surface p-4 shadow-panel hover:border-brand-blueLight/40 transition-colors"
+=======
+            className="flex items-center justify-between rounded-xl border border-base-border bg-base-surface p-4 shadow-panel hover:border-white/20 transition-colors"
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
           >
             <div className="flex items-center gap-2.5">
               <Phone size={16} className="text-status-critical" />
@@ -64,7 +68,11 @@ export default function ContactsPage() {
               <a
                 key={s._id}
                 href={`tel:${s.contactPhone}`}
+<<<<<<< HEAD
                 className="flex items-center justify-between rounded-xl border border-base-border bg-base-surface p-4 shadow-panel hover:border-brand-blueLight/40 transition-colors"
+=======
+                className="flex items-center justify-between rounded-xl border border-base-border bg-base-surface p-4 shadow-panel hover:border-white/20 transition-colors"
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
               >
                 <div>
                   <p className="text-sm text-ink-primary">{s.name}</p>

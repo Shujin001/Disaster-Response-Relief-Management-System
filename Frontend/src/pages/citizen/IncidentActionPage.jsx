@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import * as Icons from 'lucide-react'
 import { ErrorBanner } from '../../components/AsyncState'
 import { useAuth } from '../../context/AuthContext'
+<<<<<<< HEAD
 import { useTheme } from '../../context/ThemeContext'
+=======
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
 import { createIncident } from '../../api/endpoints'
 import { labelize } from '../../utils/format'
 
@@ -52,12 +55,17 @@ const MODES = {
   },
 }
 
+<<<<<<< HEAD
 const CARD_TONE_DARK = {
+=======
+const CARD_TONE = {
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
   critical: 'bg-gradient-to-br from-brand-crimson to-brand-crimsondeep text-white',
   warning: 'bg-gradient-to-br from-status-warning to-[#C97F0F] text-base',
   blue: 'bg-gradient-to-br from-brand-blue to-[#0A2E6E] text-white',
 }
 
+<<<<<<< HEAD
 // In light mode the vivid gradient card becomes a plain neutral card with a
 // colored accent border instead — same reasoning as Panel.jsx.
 const CARD_ACCENT_LIGHT = {
@@ -91,6 +99,13 @@ export default function IncidentActionPage({ mode }) {
   const submitClass = vivid
     ? 'bg-white/15 hover:bg-white/25'
     : SUBMIT_BTN_LIGHT[config.tone]
+=======
+export default function IncidentActionPage({ mode }) {
+  const config = MODES[mode]
+  const { user } = useAuth()
+  const navigate = useNavigate()
+  const Icon = Icons[config.icon]
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
 
   const [form, setForm] = useState({
     type: config.incidentType,
@@ -139,7 +154,11 @@ export default function IncidentActionPage({ mode }) {
       </div>
       <p className="text-sm text-ink-muted mb-6">{config.subtitle}</p>
 
+<<<<<<< HEAD
       <div className={`rounded-xl p-5 shadow-panel ${cardClass}`}>
+=======
+      <div className={`rounded-xl p-5 shadow-panel ${CARD_TONE[config.tone]}`}>
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
         {success ? (
           <div className="py-6 text-center">
             <p className="text-lg font-medium">Submitted</p>
@@ -155,7 +174,11 @@ export default function IncidentActionPage({ mode }) {
                 <select
                   value={form.type}
                   onChange={(e) => setForm({ ...form, type: e.target.value })}
+<<<<<<< HEAD
                   className={`w-full rounded-lg border px-3 py-2.5 text-sm focus:outline-none focus:ring-2 ${fieldClass}`}
+=======
+                  className="w-full rounded-lg border border-white/20 bg-black/20 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-white/40"
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
                 >
                   {INCIDENT_TYPES.map((t) => (
                     <option key={t} value={t} className="text-black">
@@ -174,7 +197,11 @@ export default function IncidentActionPage({ mode }) {
                   value={form.personName}
                   onChange={(e) => setForm({ ...form, personName: e.target.value })}
                   placeholder="Full name"
+<<<<<<< HEAD
                   className={`w-full rounded-lg border px-3 py-2.5 text-sm focus:outline-none focus:ring-2 ${fieldClass}`}
+=======
+                  className="w-full rounded-lg border border-white/20 bg-black/20 px-3 py-2.5 text-sm placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/40"
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
                 />
               </label>
             )}
@@ -187,7 +214,11 @@ export default function IncidentActionPage({ mode }) {
                   value={form.itemsNeeded}
                   onChange={(e) => setForm({ ...form, itemsNeeded: e.target.value })}
                   placeholder="e.g. Drinking water, blankets, first aid"
+<<<<<<< HEAD
                   className={`w-full rounded-lg border px-3 py-2.5 text-sm focus:outline-none focus:ring-2 ${fieldClass}`}
+=======
+                  className="w-full rounded-lg border border-white/20 bg-black/20 px-3 py-2.5 text-sm placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/40"
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
                 />
               </label>
             )}
@@ -199,7 +230,11 @@ export default function IncidentActionPage({ mode }) {
                 value={form.address}
                 onChange={(e) => setForm({ ...form, address: e.target.value })}
                 placeholder="Ward, area, or landmark"
+<<<<<<< HEAD
                 className={`w-full rounded-lg border px-3 py-2.5 text-sm focus:outline-none focus:ring-2 ${fieldClass}`}
+=======
+                className="w-full rounded-lg border border-white/20 bg-black/20 px-3 py-2.5 text-sm placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/40"
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
               />
             </label>
 
@@ -213,14 +248,22 @@ export default function IncidentActionPage({ mode }) {
                 value={form.description}
                 onChange={(e) => setForm({ ...form, description: e.target.value })}
                 placeholder={mode === 'missing' ? 'Last seen wearing... near...' : 'Brief description of the situation'}
+<<<<<<< HEAD
                 className={`w-full rounded-lg border px-3 py-2.5 text-sm resize-none focus:outline-none focus:ring-2 ${fieldClass}`}
+=======
+                className="w-full rounded-lg border border-white/20 bg-black/20 px-3 py-2.5 text-sm placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/40 resize-none"
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
               />
             </label>
 
             <button
               type="submit"
               disabled={submitting}
+<<<<<<< HEAD
               className={`w-full rounded-lg transition-colors text-sm font-medium py-2.5 disabled:opacity-60 disabled:cursor-not-allowed ${submitClass}`}
+=======
+              className="w-full rounded-lg bg-white/15 hover:bg-white/25 transition-colors text-sm font-medium py-2.5 disabled:opacity-60 disabled:cursor-not-allowed"
+>>>>>>> f777fe8277c87931d66a9b1a66f20985ab7a64e0
             >
               {submitting ? 'Submitting…' : config.submitLabel}
             </button>
