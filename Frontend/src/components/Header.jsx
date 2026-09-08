@@ -1,9 +1,21 @@
-import { Bell } from 'lucide-react'
+import { Bell, LogOut, ShieldCheck } from 'lucide-react'
+import { Link, useNavigate } from 'react-router-dom'
 import { orgInfo } from '../data/mockData'
+import { useAuth } from '../context/AuthContext'
+import ThemeToggle from './ThemeToggle'
 
 export default function Header({ user }) {
+  const { user: authUser, logout } = useAuth()
+  const navigate = useNavigate()
+  const isGuestCitizen = authUser?.role === 'citizen'
+
+  const handleLogout = () => {
+    logout()
+    navigate('/login')
+  }
+
   return (
-    <header className="flex items-center justify-between gap-4 border-b border-base-border bg-slate-400 backdrop-blur px-6 py-3.5">
+    <header className="flex items-center justify-between gap-4 border-b border-base-border bg-base-surface backdrop-blur px-6 py-3.5">
       <div className="flex items-center gap-3">
        <div style={{ width: "120px", height: "120px" }}>
            <img src="/Emblem_of_Nepal.svg" alt=""/> 
@@ -20,6 +32,14 @@ export default function Header({ user }) {
       </div>
 
       <div className="flex items-center gap-3 sm:gap-5">
+        {user && (
+          <span className="hidden md:inline text-sm text-ink-primary">
+            {user.name} <span className="text-ink-muted">· {user.role}</span>
+          </span>
+        )}
+
+        <ThemeToggle />
+
         <button
           aria-label="Notifications"
           className="relative rounded-lg p-2 text-ink-secondary bg-base hover:text-ink-primary hover:bg-base-raised transition-colors"
@@ -27,7 +47,29 @@ export default function Header({ user }) {
           <Bell size={18} />
           <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-status-critical" />
         </button>
-        <div style={{ width: "120px", height: "120px", border:"1px" }}>
+
+        {isGuestCitizen ? (
+          <Link
+            to="/login"
+            title="Government or volunteer? Sign in here"
+            className="flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-ink-secondary bg-base hover:text-ink-primary hover:bg-base-raised transition-colors text-sm border border-base-border"
+          >
+            <ShieldCheck size={16} />
+            <span>Staff sign in</span>
+          </Link>
+        ) : (
+          <button
+            onClick={handleLogout}
+            aria-label="Log out"
+            title="Log out"
+            className="flex items-center gap-1.5 rounded-lg p-2 text-ink-secondary bg-base hover:text-status-critical hover:bg-base-raised transition-colors text-sm"
+          >
+            <LogOut size={16} />
+            <span className="hidden sm:inline">Log out</span>
+          </button>
+        )}
+
+        <div style={{ width: "48px", height: "48px", border:"1px" }}>
            <img src="/flag.gif" alt=""/> 
         </div>        
       </div>

@@ -1,32 +1,37 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: ['class'],
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
+        // Each token reads from a CSS variable (see src/index.css) so the
+        // same class names (bg-base, text-ink-primary, etc.) automatically
+        // repaint when the `light` class is toggled on <html> — no need to
+        // sprinkle dark:/light: variants through every component.
         base: {
-          DEFAULT: '#0A0F1C',
-          surface: '#111A2C',
-          raised: '#182238',
-          border: '#232F47',
+          DEFAULT: 'rgb(var(--color-base) / <alpha-value>)',
+          surface: 'rgb(var(--color-base-surface) / <alpha-value>)',
+          raised: 'rgb(var(--color-base-raised) / <alpha-value>)',
+          border: 'rgb(var(--color-base-border) / <alpha-value>)',
         },
         brand: {
-          crimson: '#DC143C',
-          crimsondeep: '#A30F2C',
-          blue: '#0B3D91',
-          blueLight: '#2E5CB8',
+          crimson: 'rgb(var(--color-brand-crimson) / <alpha-value>)',
+          crimsondeep: 'rgb(var(--color-brand-crimsondeep) / <alpha-value>)',
+          blue: 'rgb(var(--color-brand-blue) / <alpha-value>)',
+          blueLight: 'rgb(var(--color-brand-bluelight) / <alpha-value>)',
         },
         status: {
-          critical: '#E63946',
-          warning: '#F5A524',
-          safe: '#1FAA59',
-          info: '#3B82F6',
-          idle: '#5B6B8C',
+          critical: 'rgb(var(--color-status-critical) / <alpha-value>)',
+          warning: 'rgb(var(--color-status-warning) / <alpha-value>)',
+          safe: 'rgb(var(--color-status-safe) / <alpha-value>)',
+          info: 'rgb(var(--color-status-info) / <alpha-value>)',
+          idle: 'rgb(var(--color-status-idle) / <alpha-value>)',
         },
         ink: {
-          primary: '#E9EDF7',
-          secondary: '#A7B1C7',
-          muted: '#6B7690',
+          primary: 'rgb(var(--color-ink-primary) / <alpha-value>)',
+          secondary: 'rgb(var(--color-ink-secondary) / <alpha-value>)',
+          muted: 'rgb(var(--color-ink-muted) / <alpha-value>)',
         },
       },
       fontFamily: {

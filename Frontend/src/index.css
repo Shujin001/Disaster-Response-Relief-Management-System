@@ -2,13 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Color tokens live as CSS variables (RGB triplets, no `rgb()` wrapper) so
+ * Tailwind's opacity modifiers (e.g. bg-status-critical/40) keep working —
+ * see tailwind.config.js, which references these via rgb(var(--x) / <alpha-value>).
+ * :root holds the dark theme (this app's default/original look); .light
+ * overrides the same variable names for the light theme. No component
+ * className needs to change to support this — toggling the `light` class on
+ * <html> is enough.
+ */
+:root {
+  --color-base: 10 15 28;
+  --color-base-surface: 17 26 44;
+  --color-base-raised: 24 34 56;
+  --color-base-border: 35 47 71;
+
+  --color-brand-crimson: 220 20 60;
+  --color-brand-crimsondeep: 163 15 44;
+  --color-brand-blue: 11 61 145;
+  --color-brand-bluelight: 46 92 184;
+
+  --color-status-critical: 230 57 70;
+  --color-status-warning: 245 165 36;
+  --color-status-safe: 31 170 89;
+  --color-status-info: 59 130 246;
+  --color-status-idle: 91 107 140;
+
+  --color-ink-primary: 233 237 247;
+  --color-ink-secondary: 167 177 199;
+  --color-ink-muted: 107 118 144;
+
+  --scrollbar-thumb: 35 47 71;
+  --scrollbar-thumb-hover: 46 60 92;
+}
+
+.light {
+  --color-base: 244 246 251;
+  --color-base-surface: 255 255 255;
+  --color-base-raised: 234 238 246;
+  --color-base-border: 219 225 237;
+
+  /* Brand + status colors stay constant across themes on purpose — they
+     carry semantic meaning (severity, org identity) that shouldn't shift. */
+
+  --color-ink-primary: 15 23 42;
+  --color-ink-secondary: 71 85 105;
+  --color-ink-muted: 100 116 139;
+
+  --scrollbar-thumb: 203 213 225;
+  --scrollbar-thumb-hover: 148 163 184;
+}
+
 * {
   box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+html.light {
+  color-scheme: light;
 }
 
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
+  background-color: rgb(var(--color-base));
+  transition: background-color 0.15s ease;
 }
 
 ::-webkit-scrollbar {
@@ -19,11 +79,11 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #232f47;
+  background: rgb(var(--scrollbar-thumb));
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2e3c5c;
+  background: rgb(var(--scrollbar-thumb-hover));
 }
 
 /* focus visibility for accessibility */
@@ -31,7 +91,7 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 2px solid #2e5cb8;
+  outline: 2px solid rgb(var(--color-brand-bluelight));
   outline-offset: 2px;
 }
 
